@@ -13,7 +13,7 @@
     </ion-toolbar>
   </ion-header>
 
-  <ion-card routerLink="activity-detail" button *ngFor="let activity of (activityList | async)">
+  <ion-card [routerLink]="['activity-detail', activity.id]" button *ngFor="let activity of (activityList | async)">
     <!-- I have used async because ngFor needs an array and activityList is an observable. -->
     <!-- Async will convert the observable into an array so we can use it in ngFor -->
     <ion-img [src]="activity.cropped"></ion-img>

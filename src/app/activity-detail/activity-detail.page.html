@@ -1,12 +1,15 @@
 <ion-header>
-  <ion-toolbar color="warning">
+  <ion-toolbar>
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
-    <ion-title>ActivityDetail</ion-title>
+    <ion-title>BLAH</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  
+  <ion-img [src]="(activityDetail | async)?.image"></ion-img>
+  
 
 </ion-content>

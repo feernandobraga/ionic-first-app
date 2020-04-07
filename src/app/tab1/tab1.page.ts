@@ -9,6 +9,7 @@ import { ActivityService } from '../activity.service';
   styleUrls: ['tab1.page.scss']
 })
 export class Tab1Page {
+  
 
   activityList: Observable<Activity[]>;
 
