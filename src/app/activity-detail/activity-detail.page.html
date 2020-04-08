@@ -3,13 +3,85 @@
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
-    <ion-title>BLAH</ion-title>
+    <ion-title></ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   
-  <ion-img [src]="(activityDetail | async)?.image"></ion-img>
+  <!-- skeleton content -->
+  <div *ngIf="!activityDetail">
+
+    <ion-skeleton-text animated class="skeleton-image ion-no-margin"></ion-skeleton-text>
+    <ion-card class="ion-no-margin">
+      <ion-card-header>
+        <ion-skeleton-text animated></ion-skeleton-text>
+        <ion-skeleton-text animated></ion-skeleton-text>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-skeleton-text animated></ion-skeleton-text>
+        <ion-skeleton-text animated></ion-skeleton-text>
+        <ion-skeleton-text animated></ion-skeleton-text>
+        <ion-skeleton-text animated></ion-skeleton-text>
+      </ion-card-content>
+    </ion-card>
+    
+  </div>
   
+  <!-- container for activity detail. Only load if hasLoadedContent is true -->
+  <div *ngIf="hasLoadedContent">
+    
+    <!-- the overlay button to open the modal screen -->
+    <ion-fab vertical="top" horizontal="end" slot="fixed">
+      <ion-fab-button color="warning" (click)="openModal()">
+        <ion-icon name="play"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+    <!-- end overlay button -->
+
+
+    <ion-img [src]="(activityDetail | async)?.image"></ion-img>
+  
+    <!-- ion card main info -->
+    <ion-card class="ion-no-margin">
+    
+      <ion-card-header>
+        <ion-card-title>
+          {{(activityDetail | async)?.name}}
+        </ion-card-title>
+      </ion-card-header>
+      
+      <ion-card-content>
+        {{(activityDetail | async)?.description}}
+      </ion-card-content>
+    
+    </ion-card>
+    <!-- end ion card main info -->
+
+    <!-- ion card details -->
+    <ion-card>
+      <ion-list lines="none">
+
+        <ion-item>
+          <ion-label>Duration</ion-label>
+          <ion-chip color="warning">{{(activityDetail | async)?.duration}}</ion-chip>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Category</ion-label>
+          <ion-chip color="warning">{{(activityDetail | async)?.category}}</ion-chip>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Popularity</ion-label>
+          <ion-chip color="warning">{{(activityDetail | async)?.popularity}}</ion-chip>
+        </ion-item>
+
+      </ion-list>
+    </ion-card>
+    <!-- end ion card details -->
+
+  </div>
+  <!-- end container for activity detail. Only load if hasLoadedContent is true -->
 
 </ion-content>

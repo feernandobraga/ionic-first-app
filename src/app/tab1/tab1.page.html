@@ -13,6 +13,36 @@
     </ion-toolbar>
   </ion-header>
 
+  <div *ngIf="!activityList">
+  
+    <ion-card>
+      <ion-skeleton-text animated class="skeleton-image ion-no-margin"></ion-skeleton-text>
+      <ion-card-header>
+        <ion-skeleton-text animated></ion-skeleton-text>
+        <ion-skeleton-text animated></ion-skeleton-text>
+      </ion-card-header>
+    </ion-card>
+  
+    <ion-card>
+      <ion-skeleton-text animated class="skeleton-image ion-no-margin"></ion-skeleton-text>
+      <ion-card-header>
+        <ion-skeleton-text animated></ion-skeleton-text>
+        <ion-skeleton-text animated></ion-skeleton-text>
+      </ion-card-header>
+    </ion-card>
+
+    <ion-card>
+      <ion-skeleton-text animated class="skeleton-image ion-no-margin"></ion-skeleton-text>
+      <ion-card-header>
+        <ion-skeleton-text animated></ion-skeleton-text>
+        <ion-skeleton-text animated></ion-skeleton-text>
+      </ion-card-header>
+    </ion-card>
+  
+  </div>
+  
+  
+  
   <ion-card [routerLink]="['activity-detail', activity.id]" button *ngFor="let activity of (activityList | async)">
     <!-- I have used async because ngFor needs an array and activityList is an observable. -->
     <!-- Async will convert the observable into an array so we can use it in ngFor -->
@@ -21,6 +51,7 @@
       <ion-card-title>{{activity.name}}</ion-card-title>
     </ion-card-header>
   </ion-card>
+
 
 
 </ion-content>

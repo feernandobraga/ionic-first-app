@@ -15,7 +15,10 @@ export class Tab1Page {
 
   constructor(activityService: ActivityService) {
 
-    this.activityList = activityService.getAllActivities();
+    setTimeout(() => {
+      this.activityList = activityService.getAllActivities();
+    }, 1000);
+    
 
   }
 
